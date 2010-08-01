@@ -11,6 +11,7 @@
 #include "guitargraph.hh"
 #include "glutil.hh"
 #include "i18n.hh"
+#include "songwriter.hh"
 
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
@@ -263,6 +264,7 @@ void ScreenSing::manageEvent(SDL_Event event) {
 		if (key == SDLK_F4) dispInFlash(++config["audio/round-trip"]);
 		if (key == SDLK_F5) dispInFlash(--config["audio/controller_delay"]);
 		if (key == SDLK_F6) dispInFlash(++config["audio/controller_delay"]);
+		if (key == SDLK_z) writeToFile(*m_song, boost::filesystem::path(m_song->path) / "songwriter-test");
 		bool seekback = false;
 
 		if (m_song->danceTracks.empty()) { // Seeking backwards is currently not permitted for dance songs
